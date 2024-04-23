@@ -1,0 +1,20 @@
+
+clc
+clear all
+close all
+
+n = 2;  % Dimension of the state
+m = 1;  % Dimension of the control input
+N = 120;  % Time steps
+L = 8;  % Number of experiments
+EPS = 1e-7;
+
+%% controllability check
+controllable = check_controllability(@A, @B, N);
+if controllable
+    disp('The system is controllable.');
+else
+    disp('The system is not controllable.');
+end
+%% 
+[X, U] = generate_data(L, N, n, m);
